@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import Header from "./Header/Header";
+import "./Main.css";
 import getUserCurrentLocationAPI from "../core/getUserCurrentLocationAPI";
 // import getUsersCityAndCOuntry from "../core/getUsersCityAndCOuntry";
 import fetchCurrentUsersGeoLocWeather from "../core/fetchCurrentUsersGeoLocWeather";
 import fetchCityWeather from "../core/fetchCityWeather";
 import getNewCityWeatherObject from "../core/getNewCityWeatherObject";
-import WeatherInfo from "./WeatherInfo/WeatherInfo";
+import InfoScreen from "./WeatherInfo/InfoScreen";
 import fetchCityTimeAndDateAPI from "../core/fetchCityTimeAndDateAPI";
 import getNewCityTimeAndDateObject from "../core/getNewCityTimeAndDateObject";
 
@@ -104,13 +105,13 @@ const Main = () => {
   };
 
   return (
-    <div>
+    <div className="main">
       <Header
         handleAddCityWeatherAndDateOnClick={handleAddCityWeatherAndDateOnClick}
       />
 
       {currentCityToShow !== null ? (
-        <WeatherInfo
+        <InfoScreen
           weatherInfo={weatherInfo}
           cityTimeAndDateInfo={cityTimeAndDateInfo}
           currentCityToShow={currentCityToShow}

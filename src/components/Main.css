@@ -1,0 +1,8 @@
+.main {
+  max-width: 720px;
+  height: 100vh;
+  margin: 0 auto;
+  text-align: center;
+  background: url("../img/backgrnd.jpg");
+  background-size: cover;
+}
