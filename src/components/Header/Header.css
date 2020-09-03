@@ -51,8 +51,6 @@
   top: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.9);
-  /* border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px; */
   color: rgb(168, 167, 167);
   max-height: 100%;
 }
@@ -72,15 +70,24 @@
   align-items: flex-end;
 }
 
-.temp,
+.temp-change,
 .auto-update,
 .time-format {
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
+  width: 150px;
   margin-right: 10px;
   height: 40px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 16px;
+  padding: 15px 25px;
+  font-size: 30px;
+  color: rgb(182, 179, 179);
+  text-shadow: 3px 6px rgba(50, 50, 70, 0.5);
+  text-align: center;
+  box-shadow: 3px 6px rgba(0, 0, 0, 0.2);
 }
 
 .settings-cont h4 {
@@ -120,4 +127,15 @@
 
 .checkbox:checked:before {
   left: 20px;
+}
+
+.temp-change {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 16px;
+  padding: 15px 25px;
+  font-size: 30px;
+  color: rgb(182, 179, 179);
+  text-shadow: 3px 6px rgba(50, 50, 70, 0.5);
+  text-align: center;
+  box-shadow: 3px 6px rgba(0, 0, 0, 0.2);
 }

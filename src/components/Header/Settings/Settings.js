@@ -17,7 +17,7 @@ const Settings = ({ toggleShowSettingsOnClick }) => {
 
       <div className="check-box-container">
         <h4>Temperature:</h4>
-        <div className="temp">
+        <div className="temp-change">
           <h5>°F</h5>
           <input
             // checked={showCelsium}

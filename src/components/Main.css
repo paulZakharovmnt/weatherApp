@@ -5,4 +5,7 @@
   text-align: center;
   background: url("../img/backgrnd.jpg");
   background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }

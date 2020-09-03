@@ -1,3 +1,7 @@
+.weather-info {
+  margin-bottom: 100px;
+}
+
 .general-info-container {
   display: flex;
   flex-direction: row;
@@ -5,6 +9,7 @@
   align-items: center;
   width: 95%;
   margin: 0 auto;
+  margin-bottom: 100px;
 }
 
 .deleteUpdate-container {
@@ -42,20 +47,46 @@
 
 .location {
   color: #fff;
-  font-size: 32px;
+  font-size: 42px;
   font-weight: 500;
   text-align: center;
   text-shadow: 3px 3px rgba(50, 50, 70, 0.5);
 }
+.date {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 300;
+  text-align: center;
+  text-shadow: 2px 2px rgba(50, 50, 70, 0.5);
+}
 
 .temp {
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.4);
+  margin: 0 auto;
+  width: 200px;
+  height: 100px;
   border-radius: 16px;
   padding: 15px 25px;
-  font-size: 50px;
-  color: rgb(182, 179, 179);
+  font-size: 84px;
+  color: rgb(255, 254, 254);
   font-weight: 900;
   text-shadow: 3px 6px rgba(50, 50, 70, 0.5);
   text-align: center;
   box-shadow: 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.weather-description {
+  color: #fff;
+  text-shadow: 3px 6px rgba(50, 50, 70, 0.5);
+  font-size: 30px;
+}
+
+.more-info {
+  background-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 3px 6px rgba(0, 0, 0, 0.2);
+  margin: 0 auto;
+  width: 100px;
+  height: 100px;
+  border-radius: 16px;
+  margin-top: 20px;
 }
