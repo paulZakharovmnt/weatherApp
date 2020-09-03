@@ -9,3 +9,16 @@
 
 .faChevronLeft {
 }
+
+.deleteUpdate-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 60%;
+  margin: 0 auto;
+}
+
+.delete-btn {
+  color: rgb(177, 4, 4);
+}
