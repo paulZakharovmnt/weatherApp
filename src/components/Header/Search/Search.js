@@ -36,7 +36,7 @@ const Search = ({ handleAddCityWeatherAndDateOnClick }) => {
     };
   }, [userInput]);
   return (
-    <div>
+    <div className="input-box">
       <input
         value={userInput}
         placeholder="e.g. Moscow"
