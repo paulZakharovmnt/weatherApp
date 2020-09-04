@@ -25,13 +25,14 @@
 
 .input-box {
   background-color: rgba(255, 255, 255, 0.7);
-  border-radius: 0 0 20px 20px;
+  border-radius: 20px 20px 20px 20px;
+  margin-top: 10px;
 }
 
 .input-box input {
-  margin-top: 10px;
+  margin-top: 15px;
   width: 200px;
-  height: 40px;
+  height: 30px;
   font-size: 25px;
 
   text-align: center;
@@ -138,4 +139,23 @@
   text-shadow: 3px 6px rgba(50, 50, 70, 0.5);
   text-align: center;
   box-shadow: 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* List of the Cities Styling */
+
+.listOfCities-box {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 1);
+  max-width: 360px;
+  left: 40px;
+  right: 40px;
+  top: 70px;
+}
+.city-list {
+  list-style: none;
+  padding: 0px;
+}
+
+.city-list li {
+  padding: 20px;
 }

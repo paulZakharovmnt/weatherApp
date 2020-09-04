@@ -17,6 +17,8 @@ const InfoScreen = ({
   handleShowNextCityOnClick,
   handleUpdateCityWeatherAndTimeOnClick,
   handleDeleteCityFromListOnClick,
+  showFahrenheit,
+  show24hTime,
 }) => {
   return (
     <div className="weather-info">
@@ -31,6 +33,8 @@ const InfoScreen = ({
           currentCityToShow={currentCityToShow}
           cityTimeAndDateInfo={cityTimeAndDateInfo}
           weatherInfo={weatherInfo}
+          showFahrenheit={showFahrenheit}
+          show24hTime={show24hTime}
         />
 
         <FontAwesomeIcon

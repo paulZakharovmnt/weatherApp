@@ -9,7 +9,7 @@
   align-items: center;
   width: 95%;
   margin: 0 auto;
-  margin-bottom: 100px;
+  margin-bottom: 60px;
 }
 
 .deleteUpdate-container {
@@ -36,13 +36,21 @@
 }
 
 .nav-btn {
-  color: rgba(0, 0, 0, 0.1);
+  color: rgba(255, 255, 255, 0.8);
   text-shadow: 3px 6px rgba(50, 50, 70, 0.05);
+  margin-top: -380px;
 }
 
 .active-btn {
   color: #fff;
   text-shadow: 3px 6px rgba(50, 50, 70, 0.5);
+}
+
+.full-info p {
+  color: orange;
+  width: 70%;
+  margin: 0 auto;
+  margin-top: 20px;
 }
 
 .location {
@@ -53,6 +61,7 @@
   text-shadow: 3px 3px rgba(50, 50, 70, 0.5);
 }
 .date {
+  margin-top: 20px;
   color: #fff;
   font-size: 20px;
   font-weight: 300;
@@ -63,6 +72,7 @@
 .temp {
   background-color: rgba(255, 255, 255, 0.4);
   margin: 0 auto;
+  margin-top: 20px;
   width: 200px;
   height: 100px;
   border-radius: 16px;
@@ -79,6 +89,7 @@
   color: #fff;
   text-shadow: 3px 6px rgba(50, 50, 70, 0.5);
   font-size: 30px;
+  margin-top: 20px;
 }
 
 .more-info {

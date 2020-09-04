@@ -5,7 +5,15 @@ import "./Header.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faCog } from "@fortawesome/free-solid-svg-icons";
 
-const Header = ({ handleAddCityWeatherAndDateOnClick }) => {
+const Header = ({
+  handleAddCityWeatherAndDateOnClick,
+  toggleChangeTimeFormatOnClick,
+  toggleChangeDegreesFormatOnClick,
+  toggleAutoUpdateWeatherWhenChangingCityOnClick,
+  autoUpdateWeather,
+  show24hTime,
+  showFahrenheit,
+}) => {
   const [showSearchBar, setShowSearchBar] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
 
@@ -42,7 +50,17 @@ const Header = ({ handleAddCityWeatherAndDateOnClick }) => {
       </div>
 
       {showSettings && (
-        <Settings toggleShowSettingsOnClick={toggleShowSettingsOnClick} />
+        <Settings
+          toggleAutoUpdateWeatherWhenChangingCityOnClick={
+            toggleAutoUpdateWeatherWhenChangingCityOnClick
+          }
+          toggleChangeTimeFormatOnClick={toggleChangeTimeFormatOnClick}
+          toggleChangeDegreesFormatOnClick={toggleChangeDegreesFormatOnClick}
+          autoUpdateWeather={autoUpdateWeather}
+          show24hTime={show24hTime}
+          showFahrenheit={showFahrenheit}
+          toggleShowSettingsOnClick={toggleShowSettingsOnClick}
+        />
       )}
     </div>
   );

@@ -11,11 +11,19 @@ import fetchCityTimeAndDateAPI from "../core/fetchCityTimeAndDateAPI";
 import getNewCityTimeAndDateObject from "../core/getNewCityTimeAndDateObject";
 
 const Main = () => {
+  //****** General State */
+
   const [currentUseGeoLocation, setCurrentUserGeoLocation] = useState(null);
   const [listOfTheCities, setListOfTheCities] = useState([]);
   const [weatherInfo, setWeatherInfo] = useState(null);
   const [cityTimeAndDateInfo, setCityTimeAndDateInfo] = useState(null);
   const [currentCityToShow, setCurrentCityToShow] = useState(null);
+
+  //********* State for settings menu */
+
+  const [showFahrenheit, setShowFahrenheit] = useState(false);
+  const [autoUpdateWeather, setAutoUpdateWeather] = useState(false);
+  const [show24hTime, setShow24hTime] = useState(false);
 
   let cityIdToShow = listOfTheCities.indexOf(currentCityToShow);
 
@@ -30,6 +38,12 @@ const Main = () => {
     );
     // loadUsersWeather();
   }, []);
+
+  useEffect(() => {
+    if (autoUpdateWeather) {
+      handleUpdateCityWeatherAndTimeOnClick();
+    }
+  }, [currentCityToShow]);
 
   const loadUsersWeather = async (currentUseGeoLocation) => {
     const data = await fetchCurrentUsersGeoLocWeather(currentUseGeoLocation);
@@ -104,10 +118,28 @@ const Main = () => {
     }
   };
 
+  const toggleChangeTimeFormatOnClick = () => {
+    setShow24hTime(!show24hTime);
+  };
+  const toggleChangeDegreesFormatOnClick = () => {
+    setShowFahrenheit(!showFahrenheit);
+  };
+  const toggleAutoUpdateWeatherWhenChangingCityOnClick = () => {
+    setAutoUpdateWeather(!autoUpdateWeather);
+  };
+
   return (
     <div className="main">
       <Header
         handleAddCityWeatherAndDateOnClick={handleAddCityWeatherAndDateOnClick}
+        toggleChangeTimeFormatOnClick={toggleChangeTimeFormatOnClick}
+        toggleChangeDegreesFormatOnClick={toggleChangeDegreesFormatOnClick}
+        toggleAutoUpdateWeatherWhenChangingCityOnClick={
+          toggleAutoUpdateWeatherWhenChangingCityOnClick
+        }
+        showFahrenheit={showFahrenheit}
+        show24hTime={show24hTime}
+        autoUpdateWeather={autoUpdateWeather}
       />
 
       {currentCityToShow !== null ? (
@@ -115,6 +147,8 @@ const Main = () => {
           weatherInfo={weatherInfo}
           cityTimeAndDateInfo={cityTimeAndDateInfo}
           currentCityToShow={currentCityToShow}
+          showFahrenheit={showFahrenheit}
+          show24hTime={show24hTime}
           handleShowNextCityOnClick={handleShowNextCityOnClick}
           handleShowPreviousCityOnClick={handleShowPreviousCityOnClick}
           handleUpdateCityWeatherAndTimeOnClick={
@@ -123,7 +157,9 @@ const Main = () => {
           handleDeleteCityFromListOnClick={handleDeleteCityFromListOnClick}
         />
       ) : (
-        <h2>There is no cities to show. Try to find some</h2>
+        <div className="no-cities-message">
+          <h2>There is no cities to show. Try to find some</h2>
+        </div>
       )}
     </div>
   );

@@ -2,7 +2,15 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
-const Settings = ({ toggleShowSettingsOnClick }) => {
+const Settings = ({
+  toggleShowSettingsOnClick,
+  toggleChangeTimeFormatOnClick,
+  toggleChangeDegreesFormatOnClick,
+  toggleAutoUpdateWeatherWhenChangingCityOnClick,
+  autoUpdateWeather,
+  show24hTime,
+  showFahrenheit,
+}) => {
   return (
     <div className="settings-cont">
       <div className="top-block">
@@ -18,14 +26,14 @@ const Settings = ({ toggleShowSettingsOnClick }) => {
       <div className="check-box-container">
         <h4>Temperature:</h4>
         <div className="temp-change">
-          <h5>°F</h5>
+          <h5>°C</h5>
           <input
-            // checked={showCelsium}
+            checked={showFahrenheit}
             className="checkbox"
             type="checkbox"
-            // onChange={changeCelsium}
+            onChange={toggleChangeDegreesFormatOnClick}
           />
-          <h5>°C</h5>
+          <h5>°F</h5>
         </div>
       </div>
 
@@ -34,10 +42,10 @@ const Settings = ({ toggleShowSettingsOnClick }) => {
         <div className="auto-update">
           <h5>Off</h5>
           <input
-            // checked={autoUpdateCityInfo}
+            checked={autoUpdateWeather}
             className="checkbox"
             type="checkbox"
-            // onChange={autoUpdateWeatherHandler}
+            onChange={toggleAutoUpdateWeatherWhenChangingCityOnClick}
           />
           <h5>On</h5>
         </div>
@@ -48,10 +56,10 @@ const Settings = ({ toggleShowSettingsOnClick }) => {
         <div className="time-format">
           <h5>12h</h5>
           <input
-            // checked={show24hTime}
+            checked={show24hTime}
             className="checkbox"
             type="checkbox"
-            // onChange={changeTimeFromat}
+            onChange={toggleChangeTimeFormatOnClick}
           />
           <h5>24h</h5>
         </div>
