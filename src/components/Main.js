@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Header from "./Header/Header";
 import "./Main.css";
-import getUserCurrentLocationAPI from "../core/getUserCurrentLocationAPI";
-// import getUsersCityAndCOuntry from "../core/getUsersCityAndCOuntry";
-import fetchCurrentUsersGeoLocWeather from "../core/fetchCurrentUsersGeoLocWeather";
+import fetchCurrentUserCityLocationData from "../core/fetchCurrentUserCityLocationData";
 import fetchCityWeather from "../core/fetchCityWeather";
 import getNewCityWeatherObject from "../core/getNewCityWeatherObject";
 import InfoScreen from "./WeatherInfo/InfoScreen";
@@ -18,6 +16,7 @@ const Main = () => {
   const [weatherInfo, setWeatherInfo] = useState(null);
   const [cityTimeAndDateInfo, setCityTimeAndDateInfo] = useState(null);
   const [currentCityToShow, setCurrentCityToShow] = useState(null);
+  const [currentDayTime, setCurrentDayTime] = useState("default");
 
   //********* State for settings menu */
 
@@ -36,25 +35,21 @@ const Main = () => {
         }),
       (err) => console.log(err)
     );
-    // loadUsersWeather();
   }, []);
+
+  useEffect(() => {
+    if (currentUseGeoLocation) {
+      fetchCurrentUserCityLocationData(currentUseGeoLocation).then((result) =>
+        handleAddCityWeatherAndDateOnClick(result)
+      );
+    }
+  }, [currentUseGeoLocation]);
 
   useEffect(() => {
     if (autoUpdateWeather) {
       handleUpdateCityWeatherAndTimeOnClick();
     }
   }, [currentCityToShow]);
-
-  const loadUsersWeather = async (currentUseGeoLocation) => {
-    const data = await fetchCurrentUsersGeoLocWeather(currentUseGeoLocation);
-  };
-
-  // useEffect(() => {
-  //   if (currentUseGeoLocation !== null) {
-  //     fetchCurrentUsersGeoLocWeather(currentUseGeoLocation);
-  //     // getUsersCityAndCOuntry();
-  //   }
-  // }, [currentUseGeoLocation]);
 
   const handleAddCityWeatherAndDateOnClick = async (cityInfo) => {
     const cityWeatherResult = await fetchCityWeather(cityInfo);
@@ -128,8 +123,14 @@ const Main = () => {
     setAutoUpdateWeather(!autoUpdateWeather);
   };
 
+  // const changeDayTime = (dayTime) => {
+  //   currentDayTime = dayTime;
+  // };
+
+  let mainStyleClass = ["main", currentDayTime];
+
   return (
-    <div className="main">
+    <div className={mainStyleClass.join(" ")}>
       <Header
         handleAddCityWeatherAndDateOnClick={handleAddCityWeatherAndDateOnClick}
         toggleChangeTimeFormatOnClick={toggleChangeTimeFormatOnClick}
@@ -149,6 +150,7 @@ const Main = () => {
           currentCityToShow={currentCityToShow}
           showFahrenheit={showFahrenheit}
           show24hTime={show24hTime}
+          // changeDayTime={changeDayTime}
           handleShowNextCityOnClick={handleShowNextCityOnClick}
           handleShowPreviousCityOnClick={handleShowPreviousCityOnClick}
           handleUpdateCityWeatherAndTimeOnClick={

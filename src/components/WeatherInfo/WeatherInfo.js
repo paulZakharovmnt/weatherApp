@@ -1,5 +1,6 @@
 import React from "react";
 import setupDateAndTimeObject from "../../core/setupDateAndTimeObject";
+import getDayType from "../../core/getDayType";
 
 const WeatherInfo = ({
   currentCityToShow,
@@ -7,6 +8,7 @@ const WeatherInfo = ({
   weatherInfo,
   showFahrenheit,
   show24hTime,
+  changeDayTime,
 }) => {
   const cityWeather = weatherInfo[currentCityToShow];
   let temp = Math.floor(cityWeather.main.temp - 273);
@@ -15,6 +17,8 @@ const WeatherInfo = ({
   const condition = cityWeather.weather[0];
   const weatherImage = cityWeather.weather[0].icon;
   const imageSrc = `http://openweathermap.org/img/wn/${weatherImage}@2x.png`;
+  // const dayType = getDayType(cityTimeAndDateInfo[currentCityToShow].time_24);
+  // changeDayTime(dayType);
   let cityTime = cityTimeAndDateInfo[currentCityToShow].time_12;
   let cityDate;
   if (showFahrenheit) {

@@ -1,5 +1,3 @@
-import React from "react";
-
 const setupDateAndTimeObject = (cityTime) => {
   const obj = cityTime.date_time_txt
     .split(" ")

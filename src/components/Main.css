@@ -3,11 +3,32 @@
   height: 100vh;
   margin: 0 auto;
   text-align: center;
-  background: url("../img/backgrnd.jpg");
-  background-size: cover;
+
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+.default {
+  background: url("../img/backgrnd.jpg");
+  background-size: cover;
+}
+
+.morning {
+  background: url("../img/morning-bg.jpg");
+  background-size: cover;
+}
+.day {
+  background: url("../img/day-bg.jpg");
+  background-size: cover;
+}
+.evening {
+  background: url("../img/evening-bg.jpg");
+  background-size: cover;
+}
+.night {
+  background: url("../img/night-bg.jpg");
+  background-size: cover;
 }
 
 .no-cities-message {
