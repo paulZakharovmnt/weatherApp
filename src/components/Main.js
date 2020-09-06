@@ -1,30 +1,10 @@
 import React, { useState, useEffect } from "react";
 import Header from "./Header/Header";
 import "./Main.css";
-import getDayType from "../core/getDayType";
 import fetchCurrentUserCityLocationData from "../core/fetchCurrentUserCityLocationData";
 import fetchCityWeather from "../core/fetchCityWeather";
-import getNewCityWeatherObject from "../core/getNewCityWeatherObject";
 import InfoScreen from "./WeatherInfo/InfoScreen";
 import fetchCityTimeAndDateAPI from "../core/fetchCityTimeAndDateAPI";
-import getNewCityTimeAndDateObject from "../core/getNewCityTimeAndDateObject";
-
-// const getNewCityTimeAndDateObject = (
-//   cityInfo,
-//   timeAndDateResult,
-//   cityTimeAndDateInfo
-// ) => {
-//   const newCitiesTimeInfo = { ...cityTimeAndDateInfo };
-//   newCitiesTimeInfo[cityInfo.city] = timeAndDateResult;
-//   return newCitiesTimeInfo;
-// };
-
-// const cityWeatherDateAndCoords = { ...weatherInfo };
-//     cityWeatherDateAndCoords[cityInfo.city] = {
-//       weather: cityWeatherResult,
-//       timeAndDate: timeAndDateResult,
-//       coords: cityInfo,
-//     };
 
 const Main = () => {
   //****** General State */
@@ -32,9 +12,7 @@ const Main = () => {
   const [currentUserGeoLocation, setCurrentUserGeoLocation] = useState(null);
   const [listOfTheCities, setListOfTheCities] = useState([]);
   const [weatherInfo, setWeatherInfo] = useState(null);
-  // const [cityTimeAndDateInfo, setCityTimeAndDateInfo] = useState(null);
   const [currentCityToShow, setCurrentCityToShow] = useState(null);
-  const [currentDayTime, setCurrentDayTime] = useState("default");
 
   //********* State for settings menu */
 
@@ -43,6 +21,8 @@ const Main = () => {
   const [show24hTime, setShow24hTime] = useState(false);
 
   let cityIdToShow = listOfTheCities.indexOf(currentCityToShow);
+
+  //***** Fetch Current User Location */
 
   useEffect(() => {
     window.navigator.geolocation.getCurrentPosition(
@@ -55,6 +35,8 @@ const Main = () => {
     );
   }, []);
 
+  //****** Fetch Weather Info And Time Of Current User City */
+
   useEffect(() => {
     if (currentUserGeoLocation) {
       fetchCurrentUserCityLocationData(currentUserGeoLocation).then((result) =>
@@ -63,10 +45,10 @@ const Main = () => {
     }
   }, [currentUserGeoLocation]);
 
+  //****** Auto-Update Effect If This Option is On by User */
+
   useEffect(() => {
     if (autoUpdateWeather) {
-      // handleAddCityWeatherAndDateOnClick(weatherInfo[currentCityToShow].coords);
-
       handleUpdateCityWeatherAndTimeOnClick();
     }
   }, [currentCityToShow]);
@@ -146,12 +128,6 @@ const Main = () => {
     setAutoUpdateWeather(!autoUpdateWeather);
   };
 
-  // const changeDayTime = (time24) => {
-  //   const dayTime = getDayType(time24);
-  //   console.log(time24);
-  //   setCurrentDayTime(dayTime);
-  // };
-
   let mainStyleClass = ["main", "default"];
 
   return (
@@ -171,7 +147,6 @@ const Main = () => {
       {currentCityToShow !== null ? (
         <InfoScreen
           weatherInfo={weatherInfo}
-          // cityTimeAndDateInfo={cityTimeAndDateInfo}
           currentCityToShow={currentCityToShow}
           showFahrenheit={showFahrenheit}
           show24hTime={show24hTime}

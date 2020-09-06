@@ -3,17 +3,9 @@ const weatherApi = {
   base: "https://api.openweathermap.org/data/2.5/",
 };
 const fetchCurrentUsersGeoLocWeather = async (cityCoord) => {
-  let cityWeather;
-  await fetch(
+  return await fetch(
     `${weatherApi.base}weather?lat=${cityCoord.lat}&lon=${cityCoord.long}&appid=${weatherApi.key}`
-  )
-    .then((resp) => resp.json())
-    .then((result) => {
-      cityWeather = result;
-    })
-    .catch((err) => console.log(err));
-
-  return cityWeather;
+  ).then((resp) => resp.json());
 };
 
 export default fetchCurrentUsersGeoLocWeather;

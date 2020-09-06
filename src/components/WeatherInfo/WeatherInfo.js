@@ -3,22 +3,21 @@ import setupDateAndTimeObject from "../../core/setupDateAndTimeObject";
 
 const WeatherInfo = ({
   currentCityToShow,
-  cityTimeAndDateInfo,
   weatherInfo,
   showFahrenheit,
   show24hTime,
 }) => {
   const cityWeather = weatherInfo[currentCityToShow];
-  let temp = Math.floor(cityWeather.weather.temp - 273);
-  let tempType = "°C";
-
-  const country = cityWeather.coords.country;
+  const country = cityWeather.coords.country.toUpperCase();
   const condition = cityWeather.weather.description.description;
   const weatherImage = cityWeather.weather.description.icon;
   const imageSrc = `http://openweathermap.org/img/wn/${weatherImage}@2x.png`;
 
+  let temp = Math.floor(cityWeather.weather.temp - 273);
+  let tempType = "°C";
   let cityTime = cityWeather.timeAndDate.time_12;
   let cityDate;
+
   if (showFahrenheit) {
     temp = Math.floor((temp / 5) * 9 + +32);
     tempType = "°F";
