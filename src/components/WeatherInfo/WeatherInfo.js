@@ -1,5 +1,5 @@
 import React from "react";
-import setupDateAndTimeObject from "../../core/setupDateAndTimeObject";
+import getCurrentCityDate from "../../core/getCurrentCityDate";
 
 const WeatherInfo = ({
   currentCityToShow,
@@ -15,29 +15,29 @@ const WeatherInfo = ({
 
   let temp = Math.floor(cityWeather.weather.temp - 273);
   let tempType = "°C";
-  let cityTime = cityWeather.timeAndDate.time_12;
+  let cityTime = cityWeather.timeAndDate.time12;
   let cityDate;
 
   if (showFahrenheit) {
     temp = Math.floor((temp / 5) * 9 + +32);
     tempType = "°F";
   }
+
   if (show24hTime) {
-    cityTime = cityWeather.timeAndDate.time_24;
+    cityTime = cityWeather.timeAndDate.time24;
   }
-  // if (cityWeather.timeAndDate !== undefined) {
-  //   cityDate = setupDateAndTimeObject(cityTimeAndDateInfo[currentCityToShow]);
-  // }
+
+  if (cityWeather.timeAndDate.date !== undefined) {
+    cityDate = getCurrentCityDate(cityWeather.timeAndDate.date);
+  }
 
   return (
     <div className="full-info">
       <div className="location">
         {currentCityToShow}, {country}
       </div>
-      {/* <div className="date">
-        {cityDate.name} {cityDate.day} {cityDate.month} {cityDate.year}
-      </div>
-      <p>Last update time: {cityTime} (local)</p> */}
+      <div className="date">{cityDate}</div>
+      <p>Last update time: {cityTime} (local)</p>
 
       <div className="weather-condition">
         <div className="temp">
@@ -46,7 +46,7 @@ const WeatherInfo = ({
         </div>
         <div className="weather-description">{condition}</div>
         <div className="more-info">
-          <img src={imageSrc} />
+          <img alt="" src={imageSrc} />
         </div>
       </div>
     </div>

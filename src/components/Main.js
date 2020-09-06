@@ -130,6 +130,13 @@ const Main = () => {
 
   let mainStyleClass = ["main", "default"];
 
+  if (currentCityToShow !== null) {
+    mainStyleClass = [
+      "main",
+      weatherInfo[currentCityToShow].timeAndDate.dayTime,
+    ];
+  }
+
   return (
     <div className={mainStyleClass.join(" ")}>
       <Header
