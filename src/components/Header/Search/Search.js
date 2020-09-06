@@ -24,11 +24,9 @@ const Search = ({ handleAddCityWeatherAndDateOnClick }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       if (userInput.length > 3) {
-        searchCitiesByNameAPI(userInput).then((resp) =>
-          resp.json().then((result) => {
-            setListOfTheSuggestionCities(result.data);
-          })
-        );
+        searchCitiesByNameAPI(userInput).then((result) => {
+          setListOfTheSuggestionCities(result.data);
+        });
       }
     }, 500);
     return () => {

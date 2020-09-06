@@ -19,7 +19,6 @@ const InfoScreen = ({
   handleDeleteCityFromListOnClick,
   showFahrenheit,
   show24hTime,
-  changeDayTime,
 }) => {
   return (
     <div className="weather-info">
@@ -36,7 +35,6 @@ const InfoScreen = ({
           weatherInfo={weatherInfo}
           showFahrenheit={showFahrenheit}
           show24hTime={show24hTime}
-          changeDayTime={changeDayTime}
         />
 
         <FontAwesomeIcon

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Header from "./Header/Header";
 import "./Main.css";
+import getDayType from "../core/getDayType";
 import fetchCurrentUserCityLocationData from "../core/fetchCurrentUserCityLocationData";
 import fetchCityWeather from "../core/fetchCityWeather";
 import getNewCityWeatherObject from "../core/getNewCityWeatherObject";
@@ -8,13 +9,30 @@ import InfoScreen from "./WeatherInfo/InfoScreen";
 import fetchCityTimeAndDateAPI from "../core/fetchCityTimeAndDateAPI";
 import getNewCityTimeAndDateObject from "../core/getNewCityTimeAndDateObject";
 
+// const getNewCityTimeAndDateObject = (
+//   cityInfo,
+//   timeAndDateResult,
+//   cityTimeAndDateInfo
+// ) => {
+//   const newCitiesTimeInfo = { ...cityTimeAndDateInfo };
+//   newCitiesTimeInfo[cityInfo.city] = timeAndDateResult;
+//   return newCitiesTimeInfo;
+// };
+
+// const cityWeatherDateAndCoords = { ...weatherInfo };
+//     cityWeatherDateAndCoords[cityInfo.city] = {
+//       weather: cityWeatherResult,
+//       timeAndDate: timeAndDateResult,
+//       coords: cityInfo,
+//     };
+
 const Main = () => {
   //****** General State */
 
-  const [currentUseGeoLocation, setCurrentUserGeoLocation] = useState(null);
+  const [currentUserGeoLocation, setCurrentUserGeoLocation] = useState(null);
   const [listOfTheCities, setListOfTheCities] = useState([]);
   const [weatherInfo, setWeatherInfo] = useState(null);
-  const [cityTimeAndDateInfo, setCityTimeAndDateInfo] = useState(null);
+  // const [cityTimeAndDateInfo, setCityTimeAndDateInfo] = useState(null);
   const [currentCityToShow, setCurrentCityToShow] = useState(null);
   const [currentDayTime, setCurrentDayTime] = useState("default");
 
@@ -38,56 +56,61 @@ const Main = () => {
   }, []);
 
   useEffect(() => {
-    if (currentUseGeoLocation) {
-      fetchCurrentUserCityLocationData(currentUseGeoLocation).then((result) =>
+    if (currentUserGeoLocation) {
+      fetchCurrentUserCityLocationData(currentUserGeoLocation).then((result) =>
         handleAddCityWeatherAndDateOnClick(result)
       );
     }
-  }, [currentUseGeoLocation]);
+  }, [currentUserGeoLocation]);
 
   useEffect(() => {
     if (autoUpdateWeather) {
+      // handleAddCityWeatherAndDateOnClick(weatherInfo[currentCityToShow].coords);
+
       handleUpdateCityWeatherAndTimeOnClick();
     }
   }, [currentCityToShow]);
+
+  const getFullCityInformation = (
+    cityWeatherResult,
+    timeAndDateResult,
+    cityInfo
+  ) => {
+    const cityWeatherDateAndCoords = { ...weatherInfo };
+    cityWeatherDateAndCoords[cityInfo.city] = {
+      weather: cityWeatherResult,
+      timeAndDate: timeAndDateResult,
+      coords: cityInfo,
+    };
+    return cityWeatherDateAndCoords;
+  };
 
   const handleAddCityWeatherAndDateOnClick = async (cityInfo) => {
     const cityWeatherResult = await fetchCityWeather(cityInfo);
     const timeAndDateResult = await fetchCityTimeAndDateAPI(cityInfo);
 
-    const newCityWeatherObject = getNewCityWeatherObject(
-      cityWeatherResult,
-      weatherInfo
-    );
-    const newCityTimeAndDateObject = getNewCityTimeAndDateObject(
-      cityInfo,
-      timeAndDateResult,
-      cityTimeAndDateInfo
-    );
-    if (!listOfTheCities.includes(cityWeatherResult.name)) {
-      setListOfTheCities([...listOfTheCities, cityWeatherResult.name]);
+    if (!listOfTheCities.includes(cityInfo.city)) {
+      setListOfTheCities([...listOfTheCities, cityInfo.city]);
     }
 
-    setWeatherInfo(newCityWeatherObject);
-    setCityTimeAndDateInfo(newCityTimeAndDateObject);
-    setCurrentCityToShow(cityWeatherResult.name);
+    const cityWeatherDateAndCoords = getFullCityInformation(
+      cityWeatherResult,
+      timeAndDateResult,
+      cityInfo
+    );
+
+    setWeatherInfo(cityWeatherDateAndCoords);
+    setCurrentCityToShow(cityInfo.city);
   };
 
   const handleUpdateCityWeatherAndTimeOnClick = async () => {
-    const currentCityToUpdate = {
-      city: weatherInfo[currentCityToShow].name,
-      country: weatherInfo[currentCityToShow].sys.country,
-      lat: weatherInfo[currentCityToShow].coord.lat,
-      long: weatherInfo[currentCityToShow].coord.lon,
-    };
-
-    handleAddCityWeatherAndDateOnClick(currentCityToUpdate);
+    handleAddCityWeatherAndDateOnClick(weatherInfo[currentCityToShow].coords);
   };
 
   const handleDeleteCityFromListOnClick = () => {
-    const newCityList = listOfTheCities.filter((item) => {
-      return item !== currentCityToShow;
-    });
+    const newCityList = listOfTheCities.filter(
+      (city) => city !== currentCityToShow
+    );
     setListOfTheCities(newCityList);
 
     if (listOfTheCities.length > 1) {
@@ -123,11 +146,13 @@ const Main = () => {
     setAutoUpdateWeather(!autoUpdateWeather);
   };
 
-  // const changeDayTime = (dayTime) => {
-  //   currentDayTime = dayTime;
+  // const changeDayTime = (time24) => {
+  //   const dayTime = getDayType(time24);
+  //   console.log(time24);
+  //   setCurrentDayTime(dayTime);
   // };
 
-  let mainStyleClass = ["main", currentDayTime];
+  let mainStyleClass = ["main", "default"];
 
   return (
     <div className={mainStyleClass.join(" ")}>
@@ -146,11 +171,10 @@ const Main = () => {
       {currentCityToShow !== null ? (
         <InfoScreen
           weatherInfo={weatherInfo}
-          cityTimeAndDateInfo={cityTimeAndDateInfo}
+          // cityTimeAndDateInfo={cityTimeAndDateInfo}
           currentCityToShow={currentCityToShow}
           showFahrenheit={showFahrenheit}
           show24hTime={show24hTime}
-          // changeDayTime={changeDayTime}
           handleShowNextCityOnClick={handleShowNextCityOnClick}
           handleShowPreviousCityOnClick={handleShowPreviousCityOnClick}
           handleUpdateCityWeatherAndTimeOnClick={
