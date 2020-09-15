@@ -5,6 +5,7 @@ import fetchCurrentUserCityLocationData from "../core/fetchCurrentUserCityLocati
 import fetchCityWeather from "../core/fetchCityWeather";
 import InfoScreen from "./WeatherInfo/InfoScreen";
 import fetchCityTimeAndDateAPI from "../core/fetchCityTimeAndDateAPI";
+import WarningMessage from "./WarningMessage";
 
 const Main = () => {
   //****** General State */
@@ -165,8 +166,11 @@ const Main = () => {
           handleDeleteCityFromListOnClick={handleDeleteCityFromListOnClick}
         />
       ) : (
-        <div className="no-cities-message">
-          <h2>There is no cities to show. Try to find some</h2>
+        <div className="warning-messages">
+          <div className="no-cities-message">
+            <h2>There is no cities to show. Try to find some</h2>
+          </div>
+          <WarningMessage />
         </div>
       )}
     </div>

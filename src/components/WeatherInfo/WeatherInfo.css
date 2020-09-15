@@ -70,7 +70,7 @@
 }
 
 .temp {
-  background-color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(40, 41, 57, 0.6);
   margin: 0 auto;
   margin-top: 20px;
   width: 200px;
@@ -93,7 +93,7 @@
 }
 
 .more-info {
-  background-color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(40, 41, 57, 0.6);
   box-shadow: 3px 6px rgba(0, 0, 0, 0.2);
   margin: 0 auto;
   width: 100px;
