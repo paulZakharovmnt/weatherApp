@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Settings from "./Settings/Settings";
 import Search from "./Search/Search";
 import "./Header.css";
+import { CSSTransition } from "react-transition-group";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faCog } from "@fortawesome/free-solid-svg-icons";
 
@@ -34,13 +35,21 @@ const Header = ({
           size="3x"
           onClick={toggleShowSearchBarOnClick}
         />
-        {showSearchBar && (
+
+        <CSSTransition
+          in={showSearchBar}
+          timeout={1000}
+          mountOnEnter
+          unmountOnExit
+          classNames="search-bar"
+        >
           <Search
             handleAddCityWeatherAndDateOnClick={
               handleAddCityWeatherAndDateOnClick
             }
           />
-        )}
+        </CSSTransition>
+
         <FontAwesomeIcon
           className="settings-btn"
           icon={faCog}
@@ -49,7 +58,13 @@ const Header = ({
         />
       </div>
 
-      {showSettings && (
+      <CSSTransition
+        in={showSettings}
+        timeout={400}
+        mountOnEnter
+        unmountOnExit
+        classNames="settings-animation"
+      >
         <Settings
           toggleAutoUpdateWeatherWhenChangingCityOnClick={
             toggleAutoUpdateWeatherWhenChangingCityOnClick
@@ -61,7 +76,7 @@ const Header = ({
           showFahrenheit={showFahrenheit}
           toggleShowSettingsOnClick={toggleShowSettingsOnClick}
         />
-      )}
+      </CSSTransition>
     </div>
   );
 };

@@ -7,20 +7,33 @@
 }
 
 .add-btn {
-  color: rgb(7, 165, 7);
+  color: rgba(8, 175, 8, 0.534);
   padding: 7px;
   background-color: rgba(255, 255, 255, 0.7);
-  /* border: 3px solid rgb(168, 167, 167); */
   border-radius: 20px;
   margin: 10px 0px 0px 10px;
+  cursor: pointer;
+  transition: all ease-in 0.3s;
+}
+
+.add-btn:hover {
+  color: rgb(71, 248, 71);
+  background-color: rgba(40, 41, 57, 0.5);
 }
 
 .settings-btn {
-  color: rgb(128, 126, 126);
+  color: rgba(128, 126, 126, 0.9);
   padding: 7px;
   background-color: rgba(255, 255, 255, 0.7);
   border-radius: 20px;
   margin: 10px 10px 0px 0px;
+  cursor: pointer;
+  transition: all ease-in 0.3s;
+}
+
+.settings-btn:hover {
+  color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(40, 41, 57, 0.5);
 }
 
 .input-box {
@@ -60,15 +73,35 @@
 }
 
 .close-btn {
+  color: grey;
+  cursor: pointer;
+  transition: color 0.5s;
+}
+
+.close-btn:hover {
   color: red;
 }
-/* CheckBoxes Style*/
 
-.check-box-container {
+.top-block {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 30px 20px 30px;
+}
+
+.settings-block {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   align-items: flex-end;
+}
+/* CheckBoxes Style*/
+
+.check-box-container {
+  width: 45%;
+  margin-right: 20px;
+  margin-bottom: 30px;
 }
 
 .temp-change,
@@ -78,7 +111,7 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  width: 150px;
+  width: 160px;
   margin-right: 10px;
   height: 40px;
   background-color: rgba(255, 255, 255, 0.3);
@@ -89,13 +122,6 @@
   text-shadow: 3px 6px rgba(50, 50, 70, 0.5);
   text-align: center;
   box-shadow: 3px 6px rgba(0, 0, 0, 0.2);
-}
-
-.settings-cont h4 {
-  width: 70%;
-  text-align: right;
-
-  margin: 25px 15px 0 0;
 }
 
 .checkbox {
@@ -158,4 +184,44 @@
 
 .city-list li {
   padding: 20px;
+}
+
+/* Search Bar animation styling */
+
+.search-bar-enter {
+  transform: translateY(-100px);
+}
+
+.search-bar-enter-active {
+  transform: translateY(0);
+  transition: all ease-in 0.6s;
+}
+
+.search-bar-exit {
+  transform: translateY(0);
+  transition: all ease-out 0.6s;
+}
+
+.search-bar-exit-active {
+  transform: translateY(-100px);
+}
+
+/* Settings Animation*/
+
+.settings-animation-enter {
+  opacity: 0;
+}
+
+.settings-animation-enter-active {
+  opacity: 1;
+  transition: all ease-in 0.4s;
+}
+
+.settings-animation-exit {
+  opacity: 1;
+  transition: all ease-in 0.4s;
+}
+
+.settings-animation-exit-active {
+  opacity: 0;
 }
