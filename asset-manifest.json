@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/weatherApp/static/css/main.2ef6d6bf.chunk.css",
+    "main.js": "/weatherApp/static/js/main.403a600b.chunk.js",
+    "main.js.map": "/weatherApp/static/js/main.403a600b.chunk.js.map",
+    "runtime-main.js": "/weatherApp/static/js/runtime-main.56e0137e.js",
+    "runtime-main.js.map": "/weatherApp/static/js/runtime-main.56e0137e.js.map",
+    "static/js/2.81cc8994.chunk.js": "/weatherApp/static/js/2.81cc8994.chunk.js",
+    "static/js/2.81cc8994.chunk.js.map": "/weatherApp/static/js/2.81cc8994.chunk.js.map",
+    "index.html": "/weatherApp/index.html",
+    "precache-manifest.ed267c6ca061403b6811b73d8488e753.js": "/weatherApp/precache-manifest.ed267c6ca061403b6811b73d8488e753.js",
+    "service-worker.js": "/weatherApp/service-worker.js",
+    "static/css/main.2ef6d6bf.chunk.css.map": "/weatherApp/static/css/main.2ef6d6bf.chunk.css.map",
+    "static/js/2.81cc8994.chunk.js.LICENSE.txt": "/weatherApp/static/js/2.81cc8994.chunk.js.LICENSE.txt",
+    "static/media/Main.css": "/weatherApp/static/media/night-bg.1633e1d3.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.56e0137e.js",
+    "static/js/2.81cc8994.chunk.js",
+    "static/css/main.2ef6d6bf.chunk.css",
+    "static/js/main.403a600b.chunk.js"
+  ]
+}
