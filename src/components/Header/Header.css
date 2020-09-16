@@ -4,72 +4,48 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-}
-
-.add-btn {
-  color: rgba(8, 175, 8, 0.534);
-  padding: 7px;
-  background-color: rgba(255, 255, 255, 0.7);
-  border-radius: 20px;
-  margin: 10px 0px 0px 10px;
-  cursor: pointer;
-  transition: all ease-in 0.3s;
-}
-
-.add-btn:hover {
-  color: rgb(71, 248, 71);
-  background-color: rgba(40, 41, 57, 0.5);
-}
-
-.settings-btn {
-  color: rgba(128, 126, 126, 0.9);
-  padding: 7px;
-  background-color: rgba(255, 255, 255, 0.7);
-  border-radius: 20px;
-  margin: 10px 10px 0px 0px;
-  cursor: pointer;
-  transition: all ease-in 0.3s;
-}
-
-.settings-btn:hover {
-  color: rgba(255, 255, 255, 0.7);
-  background-color: rgba(40, 41, 57, 0.5);
+  margin: 10px 10px 10px 10px;
 }
 
 .input-box {
+  align-self: center;
   background-color: rgba(255, 255, 255, 0.7);
-  border-radius: 20px 20px 20px 20px;
-  margin-top: 10px;
+  border-radius: 10px;
 }
 
 .input-box input {
-  margin-top: 15px;
-  width: 200px;
-  height: 30px;
-  font-size: 25px;
-
-  text-align: center;
+  padding: 10px;
+  max-width: 200px;
   appearance: none;
   background: none;
   border: none;
   outline: none;
+  font-size: 25px;
 }
 
-/* Settings container style*/
+/* SETTINGS STYLING*/
 
-.settings-cont {
+.black-cover {
   position: absolute;
-  max-width: 500px;
-  left: 0px;
-  right: 0px;
   top: 0;
+  left: 0;
+  right: 0;
   bottom: 0;
+  max-width: 600px;
+  height: 100%;
   background-color: rgba(0, 0, 0, 0.9);
   color: rgb(168, 167, 167);
-  max-height: 100%;
+}
+
+.settings-cont {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 .settings-cont h5 {
-  padding: 5px;
+  padding: 0 7px 0 7px;
+  font-size: 16px;
 }
 
 .close-btn {
@@ -85,43 +61,38 @@
 .top-block {
   display: flex;
   flex-direction: row;
+  width: 85%;
   justify-content: space-between;
   align-items: center;
-  margin: 10px 30px 20px 30px;
 }
 
 .settings-block {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: flex-end;
+  margin-top: 50px;
 }
+
 /* CheckBoxes Style*/
 
 .check-box-container {
-  width: 45%;
-  margin-right: 20px;
-  margin-bottom: 30px;
+  width: 55%;
+  margin: 0 auto;
+  margin-bottom: 50px;
+}
+
+.check-box-container h4 {
+  margin: 5px;
 }
 
 .temp-change,
 .auto-update,
 .time-format {
+  background-color: rgba(255, 255, 255, 0.3);
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  width: 160px;
-  margin-right: 10px;
-  height: 40px;
-  background-color: rgba(255, 255, 255, 0.3);
+  width: 100%;
+  margin: 0 auto;
   border-radius: 16px;
-  padding: 15px 25px;
-  font-size: 30px;
-  color: rgb(182, 179, 179);
-  text-shadow: 3px 6px rgba(50, 50, 70, 0.5);
-  text-align: center;
-  box-shadow: 3px 6px rgba(0, 0, 0, 0.2);
 }
 
 .checkbox {
@@ -156,26 +127,45 @@
   left: 20px;
 }
 
-.temp-change {
-  background-color: rgba(255, 255, 255, 0.3);
-  border-radius: 16px;
-  padding: 15px 25px;
-  font-size: 30px;
-  color: rgb(182, 179, 179);
-  text-shadow: 3px 6px rgba(50, 50, 70, 0.5);
-  text-align: center;
-  box-shadow: 3px 6px rgba(0, 0, 0, 0.2);
+.add-btn {
+  color: rgba(8, 175, 8, 0.534);
+  padding: 7px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 20px;
+  margin: 10px 0px 0px 10px;
+  cursor: pointer;
+  transition: all ease-in 0.3s;
+}
+
+.add-btn:hover {
+  color: rgb(71, 248, 71);
+  background-color: rgba(40, 41, 57, 0.5);
+}
+
+.settings-btn {
+  color: rgba(128, 126, 126, 0.9);
+  padding: 7px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 20px;
+  margin: 10px 10px 0px 0px;
+  cursor: pointer;
+  transition: all ease-in 0.3s;
+}
+
+.settings-btn:hover {
+  color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(40, 41, 57, 0.5);
 }
 
 /* List of the Cities Styling */
 
 .listOfCities-box {
   position: absolute;
+  color: black;
   background-color: rgba(255, 255, 255, 1);
-  max-width: 360px;
-  left: 40px;
-  right: 40px;
-  top: 70px;
+  width: 200px;
+  top: 56px;
+  border-radius: 0px 0px 10px 10px;
 }
 .city-list {
   list-style: none;
@@ -183,7 +173,22 @@
 }
 
 .city-list li {
-  padding: 20px;
+  width: 80%;
+  margin: 0 auto;
+  transition: all ease-in 0.3s;
+}
+
+.city-list li h4 {
+  margin: 0;
+  padding-top: 10px;
+}
+
+.city-list li hr {
+  margin: 0;
+}
+
+.city-list li:hover {
+  background-color: rgba(128, 126, 126, 0.9);
 }
 
 /* Search Bar animation styling */

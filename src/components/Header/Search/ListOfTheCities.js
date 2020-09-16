@@ -7,7 +7,8 @@ const ListOfTheCities = ({ list, submit }) => {
         {list.map((item) => {
           return (
             <li key={item.id} onClick={(event) => submit(item, event)}>
-              <h4>{item.city}</h4> {item.country}
+              <h4>{item.city}</h4> <h6>{item.country}</h6>
+              <hr />
             </li>
           );
         })}

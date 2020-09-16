@@ -47,16 +47,16 @@ const InfoScreen = ({
 
       <div className="deleteUpdate-container">
         <FontAwesomeIcon
-          className="delete-btn"
-          icon={faTimes}
-          size="4x"
-          onClick={handleDeleteCityFromListOnClick}
-        />
-        <FontAwesomeIcon
           className="update-btn"
           icon={faRedoAlt}
           size="3x"
           onClick={handleUpdateCityWeatherAndTimeOnClick}
+        />
+        <FontAwesomeIcon
+          className="delete-btn"
+          icon={faTimes}
+          size="4x"
+          onClick={handleDeleteCityFromListOnClick}
         />
       </div>
     </div>
