@@ -127,3 +127,23 @@
   color: rgba(255, 255, 255, 0.7);
   background-color: rgba(40, 41, 57, 0.5);
 }
+
+.circle-dot {
+  font-size: 8px;
+  color: rgba(255, 255, 255, 0.7);
+  transition: all ease-in 0.3s;
+}
+
+.activated {
+  color: rgb(0, 89, 255);
+}
+.dots-container ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+.dots-container ul li {
+  margin: 6px;
+}

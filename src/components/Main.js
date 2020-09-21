@@ -158,6 +158,7 @@ const Main = () => {
           currentCityToShow={currentCityToShow}
           showFahrenheit={showFahrenheit}
           show24hTime={show24hTime}
+          listOfTheCities={listOfTheCities}
           handleShowNextCityOnClick={handleShowNextCityOnClick}
           handleShowPreviousCityOnClick={handleShowPreviousCityOnClick}
           handleUpdateCityWeatherAndTimeOnClick={

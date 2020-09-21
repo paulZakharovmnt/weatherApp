@@ -8,6 +8,7 @@ import {
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
 import "./WeatherInfo.css";
+import Dots from "./Dots";
 
 const InfoScreen = ({
   currentCityToShow,
@@ -19,6 +20,7 @@ const InfoScreen = ({
   handleDeleteCityFromListOnClick,
   showFahrenheit,
   show24hTime,
+  listOfTheCities,
 }) => {
   return (
     <div className="weather-info">
@@ -51,6 +53,10 @@ const InfoScreen = ({
           icon={faRedoAlt}
           size="3x"
           onClick={handleUpdateCityWeatherAndTimeOnClick}
+        />
+        <Dots
+          listOfTheCities={listOfTheCities}
+          currentCityToShow={currentCityToShow}
         />
         <FontAwesomeIcon
           className="delete-btn"
