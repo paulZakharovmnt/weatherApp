@@ -1,10 +1,42 @@
 /* General Heading style*/
+.header {
+  width: 100%;
+}
 
 .header-container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin: 10px 10px 10px 10px;
+  align-items: center;
+  padding: 10px 10px 0 10px;
+}
+
+.add-btn {
+  color: rgba(8, 175, 8, 0.534);
+  padding: 7px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all ease-in 0.3s;
+}
+
+.add-btn:hover {
+  color: rgb(71, 248, 71);
+  background-color: rgba(40, 41, 57, 0.5);
+}
+
+.settings-btn {
+  color: rgba(128, 126, 126, 0.9);
+  padding: 7px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all ease-in 0.3s;
+}
+
+.settings-btn:hover {
+  color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(40, 41, 57, 0.5);
 }
 
 .input-box {
@@ -32,7 +64,7 @@
   right: 0;
   bottom: 0;
   max-width: 600px;
-  height: 100%;
+  margin: 0 auto;
   background-color: rgba(0, 0, 0, 0.9);
   color: rgb(168, 167, 167);
 }
@@ -125,36 +157,6 @@
 
 .checkbox:checked:before {
   left: 20px;
-}
-
-.add-btn {
-  color: rgba(8, 175, 8, 0.534);
-  padding: 7px;
-  background-color: rgba(255, 255, 255, 0.7);
-  border-radius: 20px;
-  margin: 10px 0px 0px 10px;
-  cursor: pointer;
-  transition: all ease-in 0.3s;
-}
-
-.add-btn:hover {
-  color: rgb(71, 248, 71);
-  background-color: rgba(40, 41, 57, 0.5);
-}
-
-.settings-btn {
-  color: rgba(128, 126, 126, 0.9);
-  padding: 7px;
-  background-color: rgba(255, 255, 255, 0.7);
-  border-radius: 20px;
-  margin: 10px 10px 0px 0px;
-  cursor: pointer;
-  transition: all ease-in 0.3s;
-}
-
-.settings-btn:hover {
-  color: rgba(255, 255, 255, 0.7);
-  background-color: rgba(40, 41, 57, 0.5);
 }
 
 /* List of the Cities Styling */

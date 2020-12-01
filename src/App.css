@@ -1,11 +1,7 @@
-* {
-  box-sizing: border-box;
-}
 body {
+  text-align: center;
   margin: 0;
   padding: 0;
-  background-color: #272838;
-  color: #fff;
   font-family: "Merriweather Sans", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -13,6 +9,12 @@ body {
 
 .App {
   height: 100vh;
-  text-align: center;
   max-width: 600px;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 768px) {
+  .App {
+    max-width: auto;
+  }
 }

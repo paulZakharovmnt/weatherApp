@@ -6,6 +6,7 @@ import fetchCityWeather from "../core/fetchCityWeather";
 import InfoScreen from "./WeatherInfo/InfoScreen";
 import fetchCityTimeAndDateAPI from "../core/fetchCityTimeAndDateAPI";
 import WarningMessage from "./WarningMessage";
+import Loader from "./Loader";
 
 const Main = () => {
   //****** General State */
@@ -14,6 +15,7 @@ const Main = () => {
   const [listOfTheCities, setListOfTheCities] = useState([]);
   const [weatherInfo, setWeatherInfo] = useState(null);
   const [currentCityToShow, setCurrentCityToShow] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   //********* State for settings menu */
 
@@ -39,20 +41,22 @@ const Main = () => {
   //****** Fetch Weather Info And Time Of Current User City */
 
   useEffect(() => {
-    if (currentUserGeoLocation) {
-      fetchCurrentUserCityLocationData(currentUserGeoLocation).then((result) =>
-        handleAddCityWeatherAndDateOnClick(result)
-      );
+    if (!currentUserGeoLocation) {
+      return;
     }
+    fetchCurrentUserCityLocationData(currentUserGeoLocation).then((result) =>
+      handleAddCityWeatherAndDateOnClick(result)
+    );
   }, [currentUserGeoLocation]);
 
   //****** Auto-Update Effect If This Option is On by User */
 
   useEffect(() => {
-    if (autoUpdateWeather) {
-      handleUpdateCityWeatherAndTimeOnClick();
+    if (!autoUpdateWeather) {
+      return;
     }
-  }, [currentCityToShow]);
+    handleUpdateCityWeatherAndTimeOnClick();
+  }, [currentCityToShow, autoUpdateWeather]);
 
   const getFullCityInformation = (
     cityWeatherResult,
@@ -69,6 +73,7 @@ const Main = () => {
   };
 
   const handleAddCityWeatherAndDateOnClick = async (cityInfo) => {
+    setIsLoading(true);
     const cityWeatherResult = await fetchCityWeather(cityInfo);
     const timeAndDateResult = await fetchCityTimeAndDateAPI(cityInfo);
 
@@ -84,6 +89,7 @@ const Main = () => {
 
     setWeatherInfo(cityWeatherDateAndCoords);
     setCurrentCityToShow(cityInfo.city);
+    setIsLoading(false);
   };
 
   const handleUpdateCityWeatherAndTimeOnClick = async () => {
@@ -140,6 +146,8 @@ const Main = () => {
 
   return (
     <div className={mainStyleClass.join(" ")}>
+      {isLoading && <Loader />}
+
       <Header
         handleAddCityWeatherAndDateOnClick={handleAddCityWeatherAndDateOnClick}
         toggleChangeTimeFormatOnClick={toggleChangeTimeFormatOnClick}

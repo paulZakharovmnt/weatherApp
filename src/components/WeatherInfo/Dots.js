@@ -14,7 +14,7 @@ const Dots = ({ listOfTheCities, currentCityToShow }) => {
             <li key={cityName} id={cityName}>
               <FontAwesomeIcon
                 className={
-                  cityName == currentCityToShow
+                  cityName === currentCityToShow
                     ? dotClassGlowing.join(" ")
                     : dotClass.join(" ")
                 }
